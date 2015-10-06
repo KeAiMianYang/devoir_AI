@@ -1,0 +1,4 @@
+play(player, move): GameBoard
+terminal(): boolean, winner
+nextMove(player): GameBoard[]
+value()
