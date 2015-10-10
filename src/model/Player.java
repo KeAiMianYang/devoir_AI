@@ -44,6 +44,8 @@ public class Player {
 	
 	public void move(Direction a_direction){
 		
+		a_direction.move_straight();
+		/*
 		if(a_direction == Direction.NORTH){
 			y = y-1;
 		}
@@ -55,7 +57,7 @@ public class Player {
 		}
 		if(a_direction == Direction.WEST){
 			x = x-1;
-		}
+		}*/
 		
 	}
 	
