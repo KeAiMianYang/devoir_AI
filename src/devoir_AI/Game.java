@@ -11,6 +11,11 @@ public class Game {
 	 * @return
 	 */
 	public GameBoard play (Player p, Direction m){
+		//calcul lié a L'IA
+		
+		// wall = p.setPosition
+		//	p.move(m);
+		
 		return null;
 	}
 	
@@ -28,7 +33,7 @@ public class Game {
 	 * @return
 	 */
 	public GameBoard[] next_move(Player p){
-		
+
 		return null;
 	}
 

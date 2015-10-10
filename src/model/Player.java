@@ -3,6 +3,7 @@ package model;
 public class Player {
 	protected Ship a_ship; // representation du joueur sur le plateau
 	protected AI a_ai; // l'intelligence du vaiseau
+	public int x, y;//position de la moto sur la grille
 	/**
 	 * Instanciation du joueur
 	 * @param i_ship
@@ -36,6 +37,26 @@ public class Player {
 	public void set_ai(AI a_ai) {
 		this.a_ai = a_ai;
 	}
+	public void setPosition(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
 	
+	public void move(Direction a_direction){
+		
+		if(a_direction == Direction.NORTH){
+			y = y-1;
+		}
+		if(a_direction == Direction.SOUTH){
+			y = y+1;
+		}
+		if(a_direction == Direction.EAST){
+			x = x-1;
+		}
+		if(a_direction == Direction.WEST){
+			x = x-1;
+		}
+		
+	}
 	
 }

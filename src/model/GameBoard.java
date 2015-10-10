@@ -18,5 +18,10 @@ public class GameBoard {
 		a_board = new Element[i_x][i_y];
 	}
 	
-	
+	public int setNumberColonne(){
+		return 10;
+	}
+	public int setNumberLine(){
+		return 10;
+	}
 }
