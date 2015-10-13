@@ -33,6 +33,7 @@ public class GameBoard {
 		a_board[i_x][i_y] = o_ship;
 		return o_player;
 	}
+	
 	public int setNumberColonne(){
 		return 10;
 	}
@@ -40,26 +41,58 @@ public class GameBoard {
 		return 10;
 	}
 	/**
-	 * 
+	 * renvoit la largeur du tableau
 	 * @return
 	 */
 	public int get_length(){
 		return a_board.length;
 	}
 	/**
-	 * 
+	 *  renvoit la largeur du tableau
 	 * @return
 	 */
 	public int get_width(){
 		return a_board[0].length;
 	}
 	/**
-	 * renvoit l'E
+	 * renvoit l'Element selon le x et le y
 	 * @param i_x
 	 * @param i_y
 	 * @return
 	 */
 	public Element get_element (int i_x, int i_y){
 		return a_board[i_x][i_y];
-	}
-}
+	} // get_element()
+	/**
+	 * modifie le tableau avec le déplacement du vaiseau
+	 * @param i_ship le vaiseau qui se déplace
+	 * @param i_posX la nouvelle position X
+	 * @param i_posY la nouvelle position Y
+	 */
+	public void move(Ship i_ship, int i_posX, int i_posY) {
+		// test si la case ciblée est vide
+		if(i_posX < 0 || i_posX > get_width()){
+			// si le X est en dehors du tableau
+			return;
+		}
+		if(i_posY < 0 || i_posY > get_length()){
+			// si le Y est en dehors du tableau
+			return;
+		}
+		if(get_element(i_posX, i_posY) != null){
+			// si le la case ciblée possède déjà une erreur
+			return;
+		}
+		// modification du plateau
+		int posX = i_ship.get_posX();
+		int posY = i_ship.get_posY();
+		// crée un mur à l'endroit où se trouvait le vaisseau
+		a_board[posX][posY] = new Wall(this, posX, posY);
+		// déplace le vaisseau
+		a_board[i_posX][i_posY] = i_ship;
+		// met à jour les coordonnée du vaisseau
+		i_ship.set_posX(i_posX);
+		i_ship.set_posY(i_posY);
+		
+	} // move()
+} // GameBoard
