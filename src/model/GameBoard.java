@@ -6,6 +6,15 @@ package model;
  */
 public class GameBoard {
 	protected Element [][] a_board;
+	/* TODO
+	+----------------- X
+	|
+	|
+	|
+	|
+	|
+	Y
+	 */
 	/**
 	 * instancie le plateau de jeu
 	 * @param i_x le nombre de lignes du plateau
@@ -72,7 +81,7 @@ public class GameBoard {
 	 * @param i_posX la nouvelle position X
 	 * @param i_posY la nouvelle position Y
 	 */
-	public void move(Ship i_ship, int i_posX, int i_posY) {
+	public void move(Ship i_ship, int i_posX, int i_posY) { //TODO modif direction
 		// test si la case ciblée est vide
 		if(i_posX < 0 || i_posX > get_width()){
 			// si le X est en dehors du tableau
@@ -91,11 +100,12 @@ public class GameBoard {
 		int posY = i_ship.get_posY();
 		// crée un mur à l'endroit où se trouvait le vaisseau
 		a_board[posX][posY] = new Wall(this, posX, posY);
-		// déplace le vaisseau
-		a_board[i_posX][i_posY] = i_ship;
 		// met à jour les coordonnée du vaisseau
 		i_ship.set_posX(i_posX);
 		i_ship.set_posY(i_posY);
+		
+		// déplace le vaisseau
+		a_board[i_posX][i_posY] = i_ship;
 		
 	} // move()
 } // GameBoard

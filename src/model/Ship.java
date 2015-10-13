@@ -32,22 +32,21 @@ public class Ship extends Element {
 	public void move(Direction a_direction){
 		//pour l'instant, ne fait rien si le robot ne peux pas avancer
 		//a_direction.move_straight();
-		int posX = 0, posY = 0;
+		int posX = a_posX, posY = a_posY;
 		
 		// modification de la position
 		if(a_direction == Direction.NORTH){
 			posY = a_posY-1;
 		}
-		if(a_direction == Direction.SOUTH){
+		else if(a_direction == Direction.SOUTH){
 			posY = a_posY+1;
 		}
-		if(a_direction == Direction.EAST){
+		else if(a_direction == Direction.EAST){
 			posX = a_posX+1;
 		}
-		if(a_direction == Direction.WEST){
+		else if(a_direction == Direction.WEST){
 			posX = a_posX-1;
 		}
-		
 		a_board.move(this, posX, posY);
 	}
 
