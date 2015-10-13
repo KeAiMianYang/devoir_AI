@@ -23,7 +23,7 @@ public class Ship extends Element {
 			a_posY = a_posY+1;
 		}
 		if(a_direction == Direction.EAST){
-			a_posX = a_posX-1;
+			a_posX = a_posX+1;
 		}
 		if(a_direction == Direction.WEST){
 			a_posX = a_posX-1;

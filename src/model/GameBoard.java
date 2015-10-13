@@ -33,22 +33,32 @@ public class GameBoard {
 		a_board[i_x][i_y] = o_ship;
 		return o_player;
 	}
-	
 	public int setNumberColonne(){
 		return 10;
 	}
 	public int setNumberLine(){
 		return 10;
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public int get_length(){
 		return a_board.length;
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public int get_width(){
 		return a_board[0].length;
 	}
-	
+	/**
+	 * renvoit l'E
+	 * @param i_x
+	 * @param i_y
+	 * @return
+	 */
 	public Element get_element (int i_x, int i_y){
 		return a_board[i_x][i_y];
 	}
