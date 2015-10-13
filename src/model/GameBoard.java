@@ -33,6 +33,7 @@ public class GameBoard {
 		a_board[i_x][i_y] = o_ship;
 		return o_player;
 	}
+	
 	public int setNumberColonne(){
 		return 10;
 	}
@@ -40,21 +41,21 @@ public class GameBoard {
 		return 10;
 	}
 	/**
-	 * 
+	 * renvoit la longueur du plateau
 	 * @return
 	 */
 	public int get_length(){
 		return a_board.length;
 	}
 	/**
-	 * 
+	 * renvoit la largeur du plateau
 	 * @return
 	 */
 	public int get_width(){
 		return a_board[0].length;
 	}
 	/**
-	 * renvoit l'E
+	 * renvoit l'Element placé dans le plateau à la position (x,y)
 	 * @param i_x
 	 * @param i_y
 	 * @return
