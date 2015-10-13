@@ -9,6 +9,10 @@ public class Ship extends Element {
 		a_direction = i_direction;
 	}
 	
+	public String get_direction(){
+		return a_direction.toString();
+	}
+	
 	public void move(Direction a_direction){
 		//a_direction.move_straight();
 		

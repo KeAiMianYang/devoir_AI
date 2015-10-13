@@ -45,4 +45,9 @@ public class Player {
 	public void move(Direction a_direction){
 		a_ship.move(a_direction);
 	}
+	
+	@Override
+	public String toString(){
+		return a_ship.toString()+" direction="+a_ship.get_direction();
+	}
 }

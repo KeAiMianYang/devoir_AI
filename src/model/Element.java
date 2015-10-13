@@ -50,4 +50,8 @@ public abstract class Element {
 	public void set_posY(int i_y){
 		a_posY = i_y;
 	}
+	@Override
+	public String toString(){
+		return "posX="+a_posX+" posY="+a_posY;
+	}
 }
