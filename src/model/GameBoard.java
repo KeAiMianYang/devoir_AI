@@ -42,6 +42,7 @@ public class GameBoard {
 	}
 	/**
 	 * renvoit la largeur du tableau
+	 * renvoit la longueur du plateau
 	 * @return
 	 */
 	public int get_length(){
@@ -49,6 +50,7 @@ public class GameBoard {
 	}
 	/**
 	 *  renvoit la largeur du tableau
+	 * renvoit la largeur du plateau
 	 * @return
 	 */
 	public int get_width(){
@@ -56,6 +58,7 @@ public class GameBoard {
 	}
 	/**
 	 * renvoit l'Element selon le x et le y
+	 * renvoit l'Element placé dans le plateau à la position (x,y)
 	 * @param i_x
 	 * @param i_y
 	 * @return

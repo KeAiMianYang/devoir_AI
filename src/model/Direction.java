@@ -1,5 +1,9 @@
 package model;
-
+/**
+ * Direction represente les directions Nord, Sud, Est, Ouest
+ * @author Jasmine
+ *
+ */
 public enum Direction {
 	NORTH{
 
@@ -73,8 +77,18 @@ public enum Direction {
 		}
 		
 	};
-	
+	/**
+	 * (non utilisé pour le moment) avance d'une case en avant
+	 * @return
+	 */
 	public abstract Direction move_straight();
+	/**
+	 * (non utilisé pour le moment) avance dans la case à gauche du vaisseau
+	 */
 	public abstract Direction move_left();
+	/**
+	 * (non utilisé pour le moment) avance dans la case à droite du vaisseau
+	 * @return
+	 */
 	public abstract Direction move_right();
 }
