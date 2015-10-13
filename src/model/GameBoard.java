@@ -27,7 +27,7 @@ public class GameBoard {
 	public Player add_player (int i_x, int i_y, Direction i_d){
 		Ship o_ship = new Ship(this, i_x, i_y, i_d);
 		Player o_player = new Player(o_ship, null); // TODO:TOCHANGE
-		if(a_board[i_x][i_y] == null){
+		if(a_board[i_x][i_y] != null){
 			return null;
 		}
 		a_board[i_x][i_y] = o_ship;
