@@ -2,3 +2,22 @@ play(player, move): GameBoard
 terminal(): boolean, winner
 nextMove(player): GameBoard[]
 value()
+
+
+Disktra:
+|___________________|
+|       323         |
+|      321234       |
+|     321T1234      |
+|      321234       |
+|       323         |
+|________3__________|
+
+(0,0), (0,1), ... (i,j) , ... (n,n)
+ +88            1   0    1     +88
+
+ Pour tous les voisins, je cherche la valeur par rapport à l'origine
+ si cette valeur est inferieur à la valeur déjà connue, on la change.
+ Une fois cela fait, on prend les voisins les moins chères, puis on refait
+ la même chose de là, en recursif.
+ (fonctionne car tous les chemins on le même poids)
