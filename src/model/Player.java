@@ -43,21 +43,6 @@ public class Player {
 	}
 	
 	public void move(Direction a_direction){
-		
-		//a_direction.move_straight();
-		
-		if(a_direction == Direction.NORTH){
-			y = y-1;
-		}
-		if(a_direction == Direction.SOUTH){
-			y = y+1;
-		}
-		if(a_direction == Direction.EAST){
-			x = x-1;
-		}
-		if(a_direction == Direction.WEST){
-			x = x-1;
-		}
-		
+		a_ship.move(a_direction);
 	}
 }

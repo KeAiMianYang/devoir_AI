@@ -7,15 +7,19 @@ package model;
 public abstract class Element {
 	final GameBoard a_board;
 	
-	int a_posX;
-	int a_posY;
+	protected int a_posX;
+	protected int a_posY;
 	
 	/**
 	 * instancie Element
 	 * @param i_board le plateau sur lequel est placé l'element. En pratique i_board vaudra "this"
 	 */
-	public Element (GameBoard i_board){
+	// penser à verifier si un élément est déjà present 
+	// dans le tableau avant d'appeler Element()
+	public Element (GameBoard i_board, int i_posX, int i_posY){
 		a_board = i_board;
+		a_posX = i_posX;
+		a_posY = i_posY;
 	}
 	
 	/**
