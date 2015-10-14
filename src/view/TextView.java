@@ -62,4 +62,16 @@ public class TextView {
 			System.out.println();
 		}
 	} // display()
+	/**
+	 * affichage simplifié se contentant d'afficher une liste des cases remplies,
+	 * et de leurs données
+	 */
+	public void display_simple(){
+		for (int i=0; i< a_boardModel.get_length(); i++ ){
+			for(int j=0; j<a_boardModel.get_width(); j++){
+				if(a_boardModel.get_element(i, j) == null) continue; //TOREMOVE
+				System.out.println("x="+i+" y="+j+" -> "+a_boardModel.get_element(i,j));
+			}
+		}
+	} // display_simple()
 } // TextView
