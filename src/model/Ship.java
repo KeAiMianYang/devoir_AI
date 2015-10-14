@@ -27,27 +27,35 @@ public class Ship extends Element {
 	}
 	/**
 	 * Bouge le vaisseau selon la direction
-	 * @param a_direction
+	 * @param i_direction
 	 */
-	public void move(Direction a_direction){
-		//pour l'instant, ne fait rien si le robot ne peux pas avancer
+	public void move(Direction i_direction){
+		//pour l'instant, ne fait rien si le robot ne peux pas avancer, exception plutôt?
 		//a_direction.move_straight();
+		//ne prend pas en compte l'impossibilité de reculer
 		int posX = a_posX, posY = a_posY;
 		
 		// modification de la position
-		if(a_direction == Direction.NORTH){
+		if(i_direction == Direction.NORTH){
 			posX = a_posX-1;
 		}
-		else if(a_direction == Direction.SOUTH){
+		else if(i_direction == Direction.SOUTH){
 			posX = a_posX+1;
 		}
-		else if(a_direction == Direction.EAST){
+		else if(i_direction == Direction.EAST){
 			posY = a_posY+1;
 		}
-		else if(a_direction == Direction.WEST){
+		else if(i_direction == Direction.WEST){
 			posY = a_posY-1;
 		}
-		a_board.move(this, posX, posY);
+		a_board.move(this, posX, posY, i_direction);
+	}
+	/**
+	 * 
+	 * @param i_d
+	 */
+	public void set_direction(Direction i_d) {
+		a_direction = i_d;
 	}
 
 }

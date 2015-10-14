@@ -1,4 +1,7 @@
 package model;
+
+import exception.OutOfBoundException;
+
 /**
  * classe representant le plateau de jeu
  * @author kork
@@ -33,9 +36,12 @@ public class GameBoard {
 	 * @param i_d la direction du vaisseau
 	 * @return le joueur crée, null si un joueur n'a pas été crée
 	 */
-	public Player add_player (int i_x, int i_y, Direction i_d){
+	public Player add_player (int i_x, int i_y, Direction i_d) /*throws OutOfBoundException*/{
 		Ship o_ship = new Ship(this, i_x, i_y, i_d);
 		Player o_player = new Player(o_ship, null); // TODO:TOCHANGE
+		if((i_x < 0 || i_x > get_length()) || (i_y < 0 || i_y > get_width()))
+//			throw new exception.OutOfBoundException(); // si on essaye de placer un robot en dehors du plateau
+			return null;
 		if(a_board[i_x][i_y] != null){
 			return null;
 		}
@@ -81,14 +87,10 @@ public class GameBoard {
 	 * @param i_posX la nouvelle position X
 	 * @param i_posY la nouvelle position Y
 	 */
-	public void move(Ship i_ship, int i_posX, int i_posY) { //TODO modif direction
+	public void move(Ship i_ship, int i_posX, int i_posY, Direction i_d) { //TODO modif direction
 		// test si la case ciblée est vide
-		if(i_posX < 0 || i_posX > get_length()){
-			// si le X est en dehors du tableau
-			return;
-		}
-		if(i_posY < 0 || i_posY > get_width()){
-			// si le Y est en dehors du tableau
+		if(i_posX < 0 || i_posX > get_length() -1 || i_posY < 0 || i_posY > get_width() -1){
+			// si le X ou Y est en dehors du tableau
 			return;
 		}
 		if(get_element(i_posX, i_posY) != null){
@@ -103,6 +105,7 @@ public class GameBoard {
 		// met à jour les coordonnée du vaisseau
 		i_ship.set_posX(i_posX);
 		i_ship.set_posY(i_posY);
+		i_ship.set_direction(i_d);
 		
 		// déplace le vaisseau
 		a_board[i_posX][i_posY] = i_ship;
