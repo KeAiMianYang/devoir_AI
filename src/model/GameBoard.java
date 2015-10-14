@@ -7,13 +7,13 @@ package model;
 public class GameBoard {
 	protected Element [][] a_board;
 	/* TODO
-	+----------------- X
+	+----------------- Y
 	|
 	|
 	|
 	|
 	|
-	Y
+	X
 	 */
 	/**
 	 * instancie le plateau de jeu
@@ -21,8 +21,8 @@ public class GameBoard {
 	 * @param i_y le nombre de colonnes du plateau
 	 */
 	public GameBoard (int i_x, int i_y){
-		i_x = i_x > 10 ? i_x : 10; // si i_x > 10 alors i_x ne change pas, sinon i_x = 10
-		i_y = i_y > 10 ? i_y : 10; // idem
+//		i_x = i_x > 10 ? i_x : 10; // si i_x > 10 alors i_x ne change pas, sinon i_x = 10
+//		i_y = i_y > 10 ? i_y : 10; // idem
 		
 		a_board = new Element[i_x][i_y];
 	}
@@ -83,11 +83,11 @@ public class GameBoard {
 	 */
 	public void move(Ship i_ship, int i_posX, int i_posY) { //TODO modif direction
 		// test si la case ciblée est vide
-		if(i_posX < 0 || i_posX > get_width()){
+		if(i_posX < 0 || i_posX > get_length()){
 			// si le X est en dehors du tableau
 			return;
 		}
-		if(i_posY < 0 || i_posY > get_length()){
+		if(i_posY < 0 || i_posY > get_width()){
 			// si le Y est en dehors du tableau
 			return;
 		}

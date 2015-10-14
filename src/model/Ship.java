@@ -36,16 +36,16 @@ public class Ship extends Element {
 		
 		// modification de la position
 		if(a_direction == Direction.NORTH){
-			posY = a_posY-1;
+			posX = a_posX-1;
 		}
 		else if(a_direction == Direction.SOUTH){
-			posY = a_posY+1;
-		}
-		else if(a_direction == Direction.EAST){
 			posX = a_posX+1;
 		}
+		else if(a_direction == Direction.EAST){
+			posY = a_posY+1;
+		}
 		else if(a_direction == Direction.WEST){
-			posX = a_posX-1;
+			posY = a_posY-1;
 		}
 		a_board.move(this, posX, posY);
 	}
