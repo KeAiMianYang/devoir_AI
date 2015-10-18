@@ -11,16 +11,16 @@ public class mainClass {
 		Player p2 = gb.add_player(2, 5, Direction.EAST);
 		
 		
-		while( p.a_lost == false && p2.a_lost == false ){
+		while( p.get_isAlive() == true && p2.get_isAlive() == true ){
 			tv.display();
 			p.move(Direction.EAST);
 			p2.move(Direction.WEST);
 			tv.display();
 		}
-		if(p.a_lost == false){
+		if(p.get_isAlive() == true){
 			System.out.println("P a gagné");
 		}
-		if(p2.a_lost == false){
+		if(p2.get_isAlive() == true){
 			System.out.println("P2 a gagné");
 		}
 		/*tv.display();
