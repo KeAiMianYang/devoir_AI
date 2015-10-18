@@ -48,7 +48,11 @@ public class Ship extends Element {
 		else if(i_direction == Direction.WEST){
 			posY = a_posY-1;
 		}
-		a_board.move(this, posX, posY, i_direction);
+		//Le vaisseau ne peux pas se deplacer, soit il y a deja un objet, soit il touche le bord du plateau,
+		//Le vaisseau a donc perdu
+		if (!a_board.move(this, posX, posY, i_direction)){
+			System.out.println("\n Crash, le vaisseau a perdu \n");
+		}
 	}
 	/**
 	 * 

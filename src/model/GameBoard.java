@@ -87,15 +87,15 @@ public class GameBoard {
 	 * @param i_posX la nouvelle position X
 	 * @param i_posY la nouvelle position Y
 	 */
-	public void move(Ship i_ship, int i_posX, int i_posY, Direction i_d) { //TODO modif direction
+	public boolean move(Ship i_ship, int i_posX, int i_posY, Direction i_d) { //TODO modif direction
 		// test si la case ciblée est vide
 		if(i_posX < 0 || i_posX > get_length() -1 || i_posY < 0 || i_posY > get_width() -1){
 			// si le X ou Y est en dehors du tableau
-			return;
+			return false;
 		}
 		if(get_element(i_posX, i_posY) != null){
 			// si le la case ciblée possède déjà une erreur
-			return;
+			return false;
 		}
 		// modification du plateau
 		int posX = i_ship.get_posX();
@@ -109,6 +109,6 @@ public class GameBoard {
 		
 		// déplace le vaisseau
 		a_board[i_posX][i_posY] = i_ship;
-		
+		return true;
 	} // move()
 } // GameBoard
