@@ -20,6 +20,9 @@ public class mainClass {
 		
 		tv.display();
 		
+		p2.move(Direction.NORTH);
+		
+		tv.display();
 	} // Main(String[])
 
 }
