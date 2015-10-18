@@ -8,7 +8,7 @@ public class Player {
 	public int x, y;//position de la moto sur la grille
 	public String a_name = "P1";
 	protected boolean a_win = false; // false : partie en cours. true : a gagner
-	protected boolean a_lost = false; // false : partie en cours; true : a perdu
+	public boolean a_lost = false; // false : partie en cours; true : a perdu
 	/**
 	 * Instanciation du joueur
 	 * @param i_ship
@@ -68,7 +68,9 @@ public class Player {
 		}
 			
 	}
-	
+	public void win(){
+		
+	}
 	/**
 	 * renvoit les coordonnées et la direction d'un vaisseau dans une chaine de caracteres
 	 */
