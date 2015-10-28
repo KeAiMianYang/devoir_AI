@@ -9,6 +9,7 @@ import exception.OutOfBoundException;
  */
 public class GameBoard {
 	protected Element [][] a_board;
+	public Player[] a_player_in_live;
 	/* TODO
 	+----------------- Y
 	|
@@ -49,6 +50,10 @@ public class GameBoard {
 		return o_player;
 	}
 	
+	public int setNumberPlayerAlive(){
+		 // TODO
+		return 1;
+	}
 	public int setNumberColonne(){
 		return 10;
 	}
