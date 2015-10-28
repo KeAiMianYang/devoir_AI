@@ -6,6 +6,11 @@ public class Player {
 	protected Ship a_ship; // representation du joueur sur le plateau
 	protected AI a_ai; // l'intelligence du vaiseau
 	public int x, y;//position de la moto sur la grille
+	public String a_name = "P1";
+	/*protected boolean a_win = false; // false : partie en cours. true : a gagner
+	public boolean a_lost = false; // false : partie en cours; true : a perdu*/
+	protected boolean a_isAlive = true; // false : le vaisseau est mort ; true : partie en cours, le vaisseau est vivant
+
 	/**
 	 * Instanciation du joueur
 	 * @param i_ship
@@ -14,6 +19,7 @@ public class Player {
 	public Player(Ship i_ship, AI i_ai){
 		a_ship = i_ship;
 		a_ai = i_ai;
+		
 	}
 	/**
 	 * retourne la moto representant le joueur
@@ -36,6 +42,10 @@ public class Player {
 	public AI get_ai() {
 		return a_ai;
 	}
+	
+	public boolean get_isAlive(){
+		return a_isAlive;
+	}
 	/**
 	 * modifie IA suivie par le joueur
 	 * @param a_ai
@@ -52,11 +62,22 @@ public class Player {
 		this.x = x;
 		this.y = y;
 	}
+	
+
 	/**
 	 * bouge le joueur
 	 */
 	public void move(Direction a_direction){
-		a_ship.move(a_direction);
+		//Le joueur ne pourra pas se deplacer s'il a perdu
+		if(a_isAlive != false){
+			if(!a_ship.move(a_direction)){
+				a_isAlive = false;
+			}
+		}
+			
+	}
+	public void win(){
+		
 	}
 	/**
 	 * renvoit les coordonnées et la direction d'un vaisseau dans une chaine de caracteres
