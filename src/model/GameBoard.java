@@ -61,7 +61,7 @@ public class GameBoard {
 		return 10;
 	}
 	/**
-	 * renvoit la largeur du tableau
+	 * renvoit la longueur du tableau
 	 * renvoit la longueur du plateau
 	 * @return
 	 */
@@ -86,6 +86,21 @@ public class GameBoard {
 	public Element get_element (int i_x, int i_y){
 		return a_board[i_x][i_y];
 	} // get_element()
+	
+	/**
+	 * renvoit une copie du plateau
+	 * @param i_gameboard
+	 * @return
+	 */
+	public GameBoard copy(GameBoard i_gameboard){
+		GameBoard o_board_copy = new GameBoard(i_gameboard.get_length(),i_gameboard.get_width());
+		for(int i=0; i<i_gameboard.get_length();i++){
+			for(int j=0; j<i_gameboard.get_width();j++){
+				o_board_copy.a_board[i][j] = i_gameboard.a_board[i][j];
+			}
+		}
+				return o_board_copy;
+	}
 	/**
 	 * modifie le tableau avec le déplacement du vaiseau
 	 * @param i_ship le vaiseau qui se déplace
