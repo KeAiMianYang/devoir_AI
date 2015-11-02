@@ -131,4 +131,32 @@ public class GameBoard {
 		a_board[i_posX][i_posY] = i_ship;
 		return true;
 	} // move()
+	
+	
+	/**
+	 * transforme le plateau de jeu en un tableau 2D d'entiers,
+	 * le plateau est agrandis pour être entouré de murs
+	 * @return
+	 */
+	public int[][] to_int(){
+		int[][] o_board = new int[a_board.length+2][a_board[0].length+2];
+		for(int i=1 ; i<a_board.length ; ++i){
+			for(int j=1 ; j<a_board[0].length ; ++j){
+				o_board[i][j] = (a_board[i][j] == null) ? 0 : -1;
+			}
+		}
+		// ajout de murs sur les bords
+		System.out.println("a = "+(a_board.length+1)+"\no = "+o_board.length);
+		for(int i=0 ; i<a_board.length+2 ; ++i){
+			o_board[i][0] = -1;
+			o_board[i][a_board.length+1] = -1; // la partie buggé
+		}
+		// idem
+		for(int i=0 ; i<a_board[0].length+2 ; ++i){
+			o_board[0][i] = -1;
+			o_board[a_board[0].length+1][i] = -1;
+		}
+		
+		return o_board;
+	} // to_int()
 } // GameBoard
