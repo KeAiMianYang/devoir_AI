@@ -1,13 +1,17 @@
 package model;
+
+import java.util.ArrayList;
+
 /**
  * Classe représentant l'algorithme de Dijkstra
  * @author kork
  *
  */
 public class Dijkstra {
-	private int[][] a_board;
-	private int a_originX;
-	private int a_originY;
+	protected int[][] a_board;
+	protected int a_originX;
+	protected int a_originY;
+	
 	
 	/**
 	 * instancie la classe
@@ -18,7 +22,7 @@ public class Dijkstra {
 		a_originX = i_ship.get_posX();
 		a_originY = i_ship.get_posY();
 	}
-	
+
 	/**
 	 * renvoit le tableau d'entiers
 	 * @return
@@ -50,7 +54,6 @@ public class Dijkstra {
 	 * @param i_cout coût du prochain coup
 	 */
 	protected void give_value_plateau(int i_x, int i_y, int i_cout){
-		System.out.println("Dijkstra("+i_x+", "+i_y+", "+i_cout+")");
 		
 		DijkstraIterator ite = new DijkstraIterator(a_board, i_x, i_y);
 		
@@ -58,7 +61,6 @@ public class Dijkstra {
 			int value =ite.next(); // on passe a la position suivante
 			int posX = ite.get_new_posX(); // la nouvelle position
 			int posY = ite.get_new_posY(); // idem
-			System.out.println("\tv="+value+" x="+posX+" y="+posY);
 			if(i_cout < value && value != -1){ // si on a trouve un chemin plus court
 				a_board[posX][posY] = i_cout; // on met a jour la valeur
 				// on passe par ce chemin pour voir si on a d'autres chemins plus courts
@@ -68,17 +70,26 @@ public class Dijkstra {
 	} // dijkstra(int, int, int)
 	
 	/**
-	 * teste si il reste des cases du tableau qui ne sont pas remplies
-	 * @return
+	 * compare deux plateaux de valeurs, et donne une valeur à ce scénario
+	 * @assert les deux plateaux doivent être de la même taille
+	 * @param i_d le plateau de valeurs adverse
+	 * @return la valeur de ce plateau, à savoir le nombre de case que le joueur contrôle comparé à l'adversaire
 	 */
-	// TODO: useless?
-	public boolean is_full(){ //TODO: trouver un meilleur test pour savoir si le tableau est plein
-		for(int i=0 ; i<a_board.length ; ++i){
-			for(int j=0 ; j<a_board[0].length ; ++j){
-				if(a_board[i][j] == 0)
-					return false;
+	public int compare(Dijkstra i_d){
+		// -ea si on veux lancer les asserts
+		assert a_board.length == i_d.get_board().length && a_board[0].length == i_d.get_board()[0].length;
+		
+		int counter=0;
+		int[][] enemyBoard = i_d.get_board();
+		
+		for(int i=1 ; i<a_board.length-1 ; ++i){
+			for(int j=1 ; j<a_board[0].length-1 ; ++j){
+				counter += (a_board[i][j] < enemyBoard[i][j]) ? 1 : 0;
+				// TODO: qu'est-ce qu'on fait quand la case a la même valeur pour les deux joueurs?
+				// pour l'instant elle vaut zero
 			}
 		}
-		return true;
-	} // is_full
+		
+		return counter;
+	} // value_board(Dijkstra)
 }
