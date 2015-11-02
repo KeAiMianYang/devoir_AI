@@ -136,25 +136,26 @@ public class GameBoard {
 	/**
 	 * transforme le plateau de jeu en un tableau 2D d'entiers,
 	 * le plateau est agrandis pour être entouré de murs
+	 * les cases vides sont instanciées avec un int élevé
 	 * @return
 	 */
 	public int[][] to_int(){
 		int[][] o_board = new int[a_board.length+2][a_board[0].length+2];
-		for(int i=1 ; i<a_board.length ; ++i){
-			for(int j=1 ; j<a_board[0].length ; ++j){
-				o_board[i][j] = (a_board[i][j] == null) ? 0 : -1;
+		for(int i=0 ; i<a_board.length ; ++i){
+			for(int j=0 ; j<a_board[0].length ; ++j){
+				o_board[i+1][j+1] = (a_board[i][j] == null) ? Integer.MAX_VALUE : -1;
+				//o_board[i+1][j+1] car o_board plus grand que a_board
 			}
 		}
 		// ajout de murs sur les bords
-		System.out.println("a = "+(a_board.length+1)+"\no = "+o_board.length);
 		for(int i=0 ; i<a_board.length+2 ; ++i){
 			o_board[i][0] = -1;
-			o_board[i][a_board.length+1] = -1; // la partie buggé
+			o_board[i][a_board[0].length+1] = -1; // a_board[0].length et pas a_board.length
 		}
 		// idem
 		for(int i=0 ; i<a_board[0].length+2 ; ++i){
 			o_board[0][i] = -1;
-			o_board[a_board[0].length+1][i] = -1;
+			o_board[a_board.length+1][i] = -1;
 		}
 		
 		return o_board;

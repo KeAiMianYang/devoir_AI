@@ -40,12 +40,7 @@ public class Dijkstra {
 	 * de nombres derminant dans combien de tours chaque position du plateau peut être atteinte
 	 */
 	public void algorithm(){
-//		int x=a_originX; // les positions qui vontchanger au fur est à mesure du programe
-//		int y=a_originY;
-//		while(!is_full()){
-//			
-//		}
-		dijkstra(a_originX, a_originY, 1);
+		give_value_plateau(a_originX, a_originY, 1);
 	}
 	
 	/**
@@ -54,14 +49,29 @@ public class Dijkstra {
 	 * @param i_y
 	 * @param i_cout coût du prochain coup
 	 */
-	private void dijkstra(int i_x, int i_y, int i_cout){
+	protected void give_value_plateau(int i_x, int i_y, int i_cout){
+		System.out.println("Dijkstra("+i_x+", "+i_y+", "+i_cout+")");
 		
-	}
+		DijkstraIterator ite = new DijkstraIterator(a_board, i_x, i_y);
+		
+		while(ite.hasNext()){
+			int value =ite.next(); // on passe a la position suivante
+			int posX = ite.get_new_posX(); // la nouvelle position
+			int posY = ite.get_new_posY(); // idem
+			System.out.println("\tv="+value+" x="+posX+" y="+posY);
+			if(i_cout < value && value != -1){ // si on a trouve un chemin plus court
+				a_board[posX][posY] = i_cout; // on met a jour la valeur
+				// on passe par ce chemin pour voir si on a d'autres chemins plus courts
+				give_value_plateau(posX, posY, i_cout+1);
+			}
+		}
+	} // dijkstra(int, int, int)
 	
 	/**
 	 * teste si il reste des cases du tableau qui ne sont pas remplies
 	 * @return
 	 */
+	// TODO: useless?
 	public boolean is_full(){ //TODO: trouver un meilleur test pour savoir si le tableau est plein
 		for(int i=0 ; i<a_board.length ; ++i){
 			for(int j=0 ; j<a_board[0].length ; ++j){
@@ -70,5 +80,5 @@ public class Dijkstra {
 			}
 		}
 		return true;
-	}
+	} // is_full
 }

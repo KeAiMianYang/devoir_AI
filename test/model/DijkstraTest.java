@@ -23,8 +23,20 @@ public class DijkstraTest {
 	}
 
 	@Test
-	public void test_() {
-		
+	public void test_algorithm() {
+		disp(a_d.get_board());
+		a_d.algorithm();
+		int[][] newBoard = a_d.get_board();
+		disp(newBoard);
+	}
+	
+	public void disp(int[][] newBoard){
+		for(int i=0 ; i<newBoard.length ; ++i){
+			for(int j=0 ; j<newBoard[0].length ; ++j){
+				System.out.print("["+newBoard[i][j]+"]");
+			}
+			System.out.println();
+		}
 	}
 
 }
