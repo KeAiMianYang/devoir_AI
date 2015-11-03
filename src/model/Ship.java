@@ -70,5 +70,10 @@ public class Ship extends Element {
 	public void set_direction(Direction i_d) {
 		a_direction = i_d;
 	}
+	
+	@Override
+	public Element copy(GameBoard i_board){
+		return new Ship(i_board, a_posX, a_posY, a_direction);
+	}
 
 }

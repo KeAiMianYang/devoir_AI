@@ -14,5 +14,10 @@ public class Wall extends Element{
 	public String toString(){
 		return super.toString()+" -> MUR";
 	}
+	
+	@Override
+	public Element copy(GameBoard i_board){
+		return new Wall(i_board, a_posX, a_posY);
+	}
 
 }

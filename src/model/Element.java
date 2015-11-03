@@ -57,4 +57,11 @@ public abstract class Element {
 	public String toString(){
 		return "posX="+a_posX+" posY="+a_posY;
 	}
+	
+	/**
+	 * Renvoit une copie de l'element
+	 * @param i_board le plateau auquel est lié l'element, forcement différent du plateau d'origine
+	 * @return la copie
+	 */
+	public abstract Element copy(GameBoard i_board);
 }
