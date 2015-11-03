@@ -57,12 +57,7 @@ public class Ship extends Element {
 		return true;
 	}
 	
-	public boolean crash(){
-	
-		//Le vaisseau ne doit plus se deplacer
-		//Le joueur a perdu
-		return true;
-	}
+
 	/**
 	 * 
 	 * @param i_d
