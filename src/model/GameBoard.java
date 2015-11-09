@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 import exception.OutOfBoundException;
 
 /**
@@ -10,6 +12,7 @@ import exception.OutOfBoundException;
 public class GameBoard {
 	protected Element [][] a_board;
 	public Player[] a_player_in_live;
+	protected ArrayList<Ship> a_listShips;
 	/* TODO
 	+----------------- Y
 	|
@@ -29,6 +32,7 @@ public class GameBoard {
 //		i_y = i_y > 10 ? i_y : 10; // idem
 		
 		a_board = new Element[i_x][i_y];
+		a_listShips = new ArrayList<Ship>();
 	}
 	/**
 	 * ajoute un joueur dans le tableau
@@ -39,6 +43,7 @@ public class GameBoard {
 	 */
 	public Player add_player (int i_x, int i_y, Direction i_d) /*throws OutOfBoundException*/{
 		Ship o_ship = new Ship(this, i_x, i_y, i_d);
+		a_listShips.add(o_ship);
 		Player o_player = new Player(o_ship, null); // TODO:TOCHANGE
 		if((i_x < 0 || i_x > get_length()) || (i_y < 0 || i_y > get_width()))
 //			throw new exception.OutOfBoundException(); // si on essaye de placer un robot en dehors du plateau
@@ -59,6 +64,9 @@ public class GameBoard {
 	}
 	public int setNumberLine(){
 		return 10;
+	}
+	public ArrayList<Ship> getListShips(){
+		return a_listShips;
 	}
 	/**
 	 * renvoit la longueur du tableau
@@ -100,7 +108,8 @@ public class GameBoard {
 				o_board_copy.a_board[i][j] = i_gameboard.a_board[i][j];
 			}
 		}
-				return o_board_copy;
+		
+		return o_board_copy;
 	}
 	/* 
 	// ma proposition
@@ -110,6 +119,9 @@ public class GameBoard {
 			for(int j=0 ; j<a_board[0].length ; ++j){
 				o_board.a_board[i][j] = a_board[i][j].copy(o_board);
 			}
+		}
+		for(Ship s : a_listShips){
+			o_board.a_listShips.add(s.copy);
 		}
 		return o_board;
 	}
@@ -151,13 +163,13 @@ public class GameBoard {
 	 * transforme le plateau de jeu en un tableau 2D d'entiers,
 	 * le plateau est agrandis pour être entouré de murs
 	 * les cases vides sont instanciées avec un int élevé
-	 * @return
+	 * @return le tableau d'entiers, Integer.MAXVALUE pour les cases vides, -1 pour les Murs, -2 pour les vaisseaux
 	 */
 	public int[][] to_int(){
 		int[][] o_board = new int[a_board.length+2][a_board[0].length+2];
 		for(int i=0 ; i<a_board.length ; ++i){
 			for(int j=0 ; j<a_board[0].length ; ++j){
-				o_board[i+1][j+1] = (a_board[i][j] == null) ? Integer.MAX_VALUE : -1;
+				o_board[i+1][j+1] = (a_board[i][j] == null) ? Integer.MAX_VALUE : a_board[i][j].get_int_value();
 				//o_board[i+1][j+1] car o_board plus grand que a_board
 			}
 		}

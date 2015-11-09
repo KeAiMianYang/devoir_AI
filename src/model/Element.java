@@ -64,4 +64,6 @@ public abstract class Element {
 	 * @return la copie
 	 */
 	public abstract Element copy(GameBoard i_board);
+
+	public abstract int get_int_value();
 }

@@ -70,5 +70,9 @@ public class Ship extends Element {
 	public Element copy(GameBoard i_board){
 		return new Ship(i_board, a_posX, a_posY, a_direction);
 	}
+	@Override
+	public int get_int_value() {
+		return -2;
+	}
 
 }

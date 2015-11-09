@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.sun.corba.se.impl.orbutil.DenseIntMapImpl;
+
 /**
  * Classe representant l'algorithme de Dijkstra
  * @author kork
@@ -24,13 +26,42 @@ public class Dijkstra {
 		a_originY = i_ship.get_posY();
 	}
 	
-	public int heuristique(GameBoard i_gb, Ship i_s){
-//		int[][] board = i_gb.to_int(); // transfert du tableau actuel
-//		int posX = i_s.get_posX() + 1;
-//		int posY = i_s.get_posY() +1;
+	/**
+	 * la methode à utiliser pour calculer l'heuristique
+	 * @param i_gb le plateau de jeu dans l'état à tester
+	 * @param i_s le vaisseau du joueur dont c'est le tour
+	 * @param i_enemies la liste de tous les vaiseaux dans le jeu
+	 * @return
+	 */
+	public static int heuristique(GameBoard i_gb, Ship i_s ,ArrayList<Ship> i_ships){
+		int[][] currentBoard = i_gb.to_int();
+		Dijkstra dPlayer = new Dijkstra(currentBoard, i_s);
+		dPlayer.algorithm();
+		int[][] enemyBoard = i_gb.to_int();
+		for(Ship ship : i_ships){
+			if(!(ship == i_s)){ // si ce n'est pas le vaisseau testé
+				Dijkstra dEnemy = new Dijkstra(currentBoard, ship);
+				dEnemy.algorithm();
+				dEnemy.updateEnemyBoard(enemyBoard);
+			}
+		}
 		
-		Random r = new Random();
-		return r.nextInt(9)+1; // une valeur entre 1 et 10
+		return dPlayer.compare(enemyBoard);
+		
+//		Random r = new Random();
+//		return r.nextInt(9)+1; // une valeur entre 1 et 10
+	}
+
+	/**
+	 * met à jour le plateau pour ajouter les valeurs du joueur enemis (utile pour plus de 2 joueurs)
+	 * @param enemyBoard le joueur enemy
+	 */
+	private void updateEnemyBoard(int[][] i_enemyBoard) {
+		for(int i=1 ; i<i_enemyBoard.length-1 ; ++i){
+			for(int j=1 ; j<i_enemyBoard[0].length-1 ; ++j){
+				i_enemyBoard[i][j] = Math.min(i_enemyBoard[i][j], a_board[i][j]);
+			}
+		}
 	}
 
 	/**
@@ -85,16 +116,15 @@ public class Dijkstra {
 	 * @param i_d le plateau de valeurs adverse
 	 * @return la valeur de ce plateau, Ã  savoir le nombre de case que le joueur contrÃ´le comparÃ© Ã  l'adversaire
 	 */
-	public int compare(Dijkstra i_d){
+	public int compare(int[][] i_d){
 		// -ea si on veux lancer les asserts
-		assert a_board.length == i_d.get_board().length && a_board[0].length == i_d.get_board()[0].length;
+		assert a_board.length == i_d.length && a_board[0].length == i_d[0].length;
 		
 		int counter=0;
-		int[][] enemyBoard = i_d.get_board();
 		
 		for(int i=1 ; i<a_board.length-1 ; ++i){
 			for(int j=1 ; j<a_board[0].length-1 ; ++j){
-				counter += (a_board[i][j] < enemyBoard[i][j]) ? 1 : 0;
+				counter += (a_board[i][j] < i_d[i][j]) ? 1 : 0;
 				// TODO: qu'est-ce qu'on fait quand la case a la mÃªme valeur pour les deux joueurs?
 				// pour l'instant elle vaut zero
 			}

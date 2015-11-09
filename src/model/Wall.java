@@ -20,4 +20,9 @@ public class Wall extends Element{
 		return new Wall(i_board, a_posX, a_posY);
 	}
 
+	@Override
+	public int get_int_value() {
+		return -1;
+	}
+
 }

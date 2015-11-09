@@ -47,8 +47,8 @@ public class DijkstraTest {
 		System.out.println("player 2 :");
 		disp(a_d2.get_board());
 		
-		int value = a_d.compare(a_d2);
-		int value2 = a_d2.compare(a_d);
+		int value = a_d.compare(a_d2.get_board());
+		int value2 = a_d2.compare(a_d.get_board());
 		System.out.println("P1 : "+value+"\nP2 : "+value2);
 	}
 	
