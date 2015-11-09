@@ -1,9 +1,10 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
- * Classe représentant l'algorithme de Dijkstra
+ * Classe representant l'algorithme de Dijkstra
  * @author kork
  *
  */
@@ -15,12 +16,21 @@ public class Dijkstra {
 	
 	/**
 	 * instancie la classe
-	 * @param i_board le tableau d'entier tiré de GameBoard
+	 * @param i_board le tableau d'entier tirÃ© de GameBoard
 	 */
 	public Dijkstra(int[][] i_board, Ship i_ship){
 		a_board = i_board;
 		a_originX = i_ship.get_posX();
 		a_originY = i_ship.get_posY();
+	}
+	
+	public int heuristique(GameBoard i_gb, Ship i_s){
+//		int[][] board = i_gb.to_int(); // transfert du tableau actuel
+//		int posX = i_s.get_posX() + 1;
+//		int posY = i_s.get_posY() +1;
+		
+		Random r = new Random();
+		return r.nextInt(9)+1; // une valeur entre 1 et 10
 	}
 
 	/**
@@ -41,17 +51,17 @@ public class Dijkstra {
 	
 	/**
 	 * algorithme principale, remplis le tableau d'entier
-	 * de nombres derminant dans combien de tours chaque position du plateau peut être atteinte
+	 * de nombres derminant dans combien de tours chaque position du plateau peut Ãªtre atteinte
 	 */
 	public void algorithm(){
 		give_value_plateau(a_originX, a_originY, 1);
 	}
 	
 	/**
-	 * Le veritable algorithme, est récursif
+	 * Le veritable algorithme, est rÃ©cursif
 	 * @param i_x
 	 * @param i_y
-	 * @param i_cout coût du prochain coup
+	 * @param i_cout coÃ»t du prochain coup
 	 */
 	protected void give_value_plateau(int i_x, int i_y, int i_cout){
 		
@@ -70,10 +80,10 @@ public class Dijkstra {
 	} // dijkstra(int, int, int)
 	
 	/**
-	 * compare deux plateaux de valeurs, et donne une valeur à ce scénario
-	 * @assert les deux plateaux doivent être de la même taille
+	 * compare deux plateaux de valeurs, et donne une valeur Ã  ce scÃ©nario
+	 * @assert les deux plateaux doivent Ãªtre de la mÃªme taille
 	 * @param i_d le plateau de valeurs adverse
-	 * @return la valeur de ce plateau, à savoir le nombre de case que le joueur contrôle comparé à l'adversaire
+	 * @return la valeur de ce plateau, Ã  savoir le nombre de case que le joueur contrÃ´le comparÃ© Ã  l'adversaire
 	 */
 	public int compare(Dijkstra i_d){
 		// -ea si on veux lancer les asserts
@@ -85,7 +95,7 @@ public class Dijkstra {
 		for(int i=1 ; i<a_board.length-1 ; ++i){
 			for(int j=1 ; j<a_board[0].length-1 ; ++j){
 				counter += (a_board[i][j] < enemyBoard[i][j]) ? 1 : 0;
-				// TODO: qu'est-ce qu'on fait quand la case a la même valeur pour les deux joueurs?
+				// TODO: qu'est-ce qu'on fait quand la case a la mÃªme valeur pour les deux joueurs?
 				// pour l'instant elle vaut zero
 			}
 		}
