@@ -1,7 +1,16 @@
-contrainte de syntaxe:
-attributs : a_maVar
-variables d'entrÃ©es : i_maVar
-variables de sorties : o_maVar
-classes : MaClasse
-fonctions : ma_fonction
-packages : mon_package
+Pour Jasmine:
+	Il faut faire un programme de jeu simple, deux joueurs, dans une grille,
+	joueur 1 joue, on crée 4 plateaux, et on fait bouger le joueur dans une des directions
+	(north, south, east, west) dans chaqu'un des plateaux copié.
+	
+	Si le joueur crash, ce plateau n'est pas compté (enfin, on lui met une heuristique de 0),
+	sinon, on utilise la methode que je vais creer dans Dijkstra pour récuperer l'heuristique
+	du plateau.
+	on prend le plateau avec le meilleur score
+	
+	Cas particuliers:
+		le premier coup de la partie de chaque joueur ne peux pas être dans les 4 directions,
+		il faut prendre en compte la direction du vaisseau (pas le plus important pour l'instant),
+		il faut prendre en compte la victoire de l'un des joueurs,
+		il faudra peut-etre modifier la methode de crash pour qu'il soit facile de savoir si
+		le vaisseau c'est crashé pour l'algorithm (un renvoit de true/false si c'etait un booleen?
