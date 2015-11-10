@@ -101,7 +101,7 @@ public class GameBoard {
 	 * @return
 	 */
 	// y'a un probleme avec ta methode, il faut aussi faire une methode copy() pour Element, Ship, Wall
-	public GameBoard copy(GameBoard i_gameboard){ 
+/*	public GameBoard copy(GameBoard i_gameboard){ 
 		GameBoard o_board_copy = new GameBoard(i_gameboard.get_length(),i_gameboard.get_width());
 		for(int i=0; i<i_gameboard.get_length();i++){
 			for(int j=0; j<i_gameboard.get_width();j++){
@@ -110,22 +110,23 @@ public class GameBoard {
 		}
 		
 		return o_board_copy;
-	}
-	/* 
+	}*/
+	
 	// ma proposition
 	public GameBoard copy(){
 		GameBoard o_board = new GameBoard(a_board.length, a_board[0].length);
 		for(int i=0 ; i<a_board.length ; ++i){
+			
 			for(int j=0 ; j<a_board[0].length ; ++j){
 				o_board.a_board[i][j] = a_board[i][j].copy(o_board);
 			}
 		}
 		for(Ship s : a_listShips){
-			o_board.a_listShips.add(s.copy);
+			o_board.a_listShips.add(s.copy(o_board));
 		}
 		return o_board;
 	}
-	*/
+	
 	
 	/**
 	 * modifie le tableau avec le déplacement du vaiseau

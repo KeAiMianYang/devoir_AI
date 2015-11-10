@@ -10,11 +10,13 @@ public class Game {
 	 * @param m
 	 * @return
 	 */
-	public GameBoard play (Player p, Direction m){
+	public GameBoard play (Player p, Direction m, GameBoard g){
 		//calcul lié a L'IA
 		
 		// wall = p.setPosition
 		//	p.move(m);
+		
+		next_move(p,g);
 		
 		return null;
 	}
@@ -32,8 +34,18 @@ public class Game {
 	 * @param p le joueur
 	 * @return
 	 */
-	public GameBoard[] next_move(Player p){
-
+	public GameBoard next_move(Player p,GameBoard g){
+		GameBoard gNord = g.copy();// Copie pour le NORD
+		GameBoard gSud = g.copy();//Copie pour le SUD		
+		GameBoard gEst = g.copy();//Copie pour l'EST
+		GameBoard gOuest = g.copy();//Copie pour l'OUEST
+		
+		//Il faut executer la méthode move du vaisseau dans les différents plateau
+		gNord.getListShips(); 
+		
+		//Puis comparer les valeurs du plateau
+		
+		//Enfin retourner le meilleur plateau
 		return null;
 	}
 
@@ -43,6 +55,7 @@ public class Game {
 	 * @return la valeur du plateau
 	 */
 	public int value(GameBoard g){
+		//Appel les méthodes dans Dijsktra pour avoir la valeur de l'heuristique
 		return 0;
 	}
 }
