@@ -28,6 +28,7 @@ public class Ship extends Element {
 	/**
 	 * Bouge le vaisseau selon la direction
 	 * @param i_direction
+	 * @return renvoit vrai si le vaisseau à pu bouger, faux sinon (il est alors crashé)
 	 */
 	public boolean move(Direction i_direction){
 		//pour l'instant, ne fait rien si le robot ne peux pas avancer, exception plutôt?
@@ -74,6 +75,19 @@ public class Ship extends Element {
 	@Override
 	public int get_int_value() {
 		return -2;
+	}
+	
+	/**
+	 * teste si deux vaisseaux sont égaux
+	 * @param ship
+	 * @return
+	 */
+	@Override
+	public boolean is_equal(Element ship) {
+		Ship tmp_ship = (Ship) ship;
+		boolean samePosition = super.is_equal(ship);
+		boolean sameDirection = tmp_ship.get_direction() == get_direction();
+		return samePosition && sameDirection;
 	}
 
 

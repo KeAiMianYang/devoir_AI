@@ -66,4 +66,14 @@ public abstract class Element {
 	public abstract Element copy(GameBoard i_board);
 
 	public abstract int get_int_value();
+
+	/**
+	 * test si deux elements sont égaux
+	 * @param i_element l'élement à tester
+	 * @return vrai si ils sont égaux, faux sinon
+	 */
+	public boolean is_equal(Element i_element) {
+		boolean samePosition = i_element.get_posX() == get_posX() && i_element.get_posY() == get_posY();
+		return samePosition && i_element.get_int_value() == get_int_value(); 
+	}
 }

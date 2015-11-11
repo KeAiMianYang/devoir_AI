@@ -33,12 +33,14 @@ public class Dijkstra {
 	 * @param i_enemies la liste de tous les vaiseaux dans le jeu
 	 * @return
 	 */
-	public static int heuristique(GameBoard i_gb, Ship i_s ,ArrayList<Ship> i_ships){
+	public static int heuristique(GameBoard i_gb, Ship i_s){
 		int[][] currentBoard = i_gb.to_int();
+		ArrayList<Ship> ships = i_gb.getListShips();
+		
 		Dijkstra dPlayer = new Dijkstra(currentBoard, i_s);
 		dPlayer.algorithm();
 		int[][] enemyBoard = i_gb.to_int();
-		for(Ship ship : i_ships){
+		for(Ship ship : ships){
 			if(!(ship == i_s)){ // si ce n'est pas le vaisseau testé
 				Dijkstra dEnemy = new Dijkstra(currentBoard, ship);
 				dEnemy.algorithm();

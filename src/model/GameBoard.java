@@ -68,6 +68,21 @@ public class GameBoard {
 	public ArrayList<Ship> getListShips(){
 		return a_listShips;
 	}
+	
+	/**
+	 * renvoit le vaisseau du plateau équivalent le vaisseau donné en paramètre
+	 * (teste ses attributs)
+	 * @param i_ship le vaisseau dont on cherche la copie
+	 * @return l'équivalent du vaisseau dans ce plateau, null si il n'y a pas d'équivalent
+	 */
+	public Ship get_equivalent_ship(Ship i_ship){
+		for(Ship ship : a_listShips){
+			if(i_ship.is_equal(ship)){
+				return ship;
+			}
+		}
+		return null;
+	}
 	/**
 	 * renvoit la longueur du tableau
 	 * renvoit la longueur du plateau
