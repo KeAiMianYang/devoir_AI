@@ -31,6 +31,7 @@ public class Ship extends Element {
 	 */
 	public boolean move(Direction i_direction){
 		//pour l'instant, ne fait rien si le robot ne peux pas avancer, exception plutôt?
+		// NON, exception pour exceptionnel
 		//a_direction.move_straight();
 		//ne prend pas en compte l'impossibilité de reculer
 		int posX = a_posX, posY = a_posY;
