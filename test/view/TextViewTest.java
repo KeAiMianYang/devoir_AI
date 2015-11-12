@@ -1,4 +1,4 @@
-package devoir_AI;
+package view;
 
 import model.*;
 import view.*;

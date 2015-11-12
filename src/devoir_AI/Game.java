@@ -46,6 +46,7 @@ public class Game {
 		GameBoard gSud = g.copy();//Copie pour le SUD		
 		GameBoard gEst = g.copy();//Copie pour l'EST
 		GameBoard gOuest = g.copy();//Copie pour l'OUEST
+		
 		Ship originalShip = p.get_ship();
 		
 		// Il faut recuperer le vaisseau à déplacer dans chaque cas
