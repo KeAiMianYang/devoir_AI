@@ -133,7 +133,9 @@ public class GameBoard {
 		for(int i=0 ; i<a_board.length ; ++i){
 			
 			for(int j=0 ; j<a_board[0].length ; ++j){
+				if(a_board[i][j] != null){
 				o_board.a_board[i][j] = a_board[i][j].copy(o_board);
+				}
 			}
 		}
 		for(Ship s : a_listShips){
