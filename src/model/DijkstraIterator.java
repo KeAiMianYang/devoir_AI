@@ -40,7 +40,7 @@ public class DijkstraIterator implements Iterator <Integer> {
 	public Integer next() {
 		a_newPosX = a_posX + a_deltas[a_counter][0];
 		a_newPosY = a_posY + a_deltas[a_counter][1];
-		
+		System.out.println(a_newPosX +" "+ a_newPosY);
 		int o_value = a_board[a_newPosX][a_newPosY];
 		
 		++a_counter;
