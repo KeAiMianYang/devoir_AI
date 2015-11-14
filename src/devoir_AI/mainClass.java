@@ -9,7 +9,7 @@ public class mainClass {
 		TextView tv = new TextView(gb);
 		Player p = gb.add_player(0, 1, Direction.WEST);
 		Player p2 = gb.add_player(2, 5, Direction.EAST);
-		/*
+		
 		
 		while( p.get_isAlive() == true && p2.get_isAlive() == true ){
 			tv.display();
@@ -23,9 +23,13 @@ public class mainClass {
 		if(p2.get_isAlive() == true){
 			System.out.println("P2 a gagné");
 		}
-		*/
+		
 		GameBoard gNord = gb.copy();
 		System.out.println(gNord.getListShips()+" "+gb.getListShips());
+		
+		TextView tv2 = new TextView(gNord);
+		tv2.display();
+		
 		/*tv.display();
 		
 		p2.move(Direction.WEST);

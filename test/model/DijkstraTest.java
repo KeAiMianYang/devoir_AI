@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
+import view.TextView;
+
 public class DijkstraTest {
 	
 	static Dijkstra a_d;
@@ -59,6 +61,12 @@ public class DijkstraTest {
 			}
 			System.out.println();
 		}
+	}
+	
+	@Test
+	public void test_heuristique(){
+		TextView tv = new TextView(gb);
+		
 	}
 
 }
