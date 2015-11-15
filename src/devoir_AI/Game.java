@@ -59,6 +59,7 @@ public class Game {
 		Ship cpShipEast = gEst.get_equivalent_ship(originalShip);
 		Ship cpShipWest = gOuest.get_equivalent_ship(originalShip);
 		
+		
 		//Il faut bouger le vaisseau en question dans chaque direction
 		boolean isAliveNorth = false;
 		boolean isAliveSouth = false;
@@ -75,6 +76,14 @@ public class Game {
 			e.printStackTrace();
 			System.exit(-1);
 		}
+		
+		//On s'assure qu'un vaisseau ne puisse pas se retourner
+		Direction deadEnd = p.get_ship().get_vrai_direction().turn_about();
+		if(deadEnd == Direction.NORTH) isAliveNorth = false;
+		if(deadEnd == Direction.SOUTH) isAliveSouth = false;
+		if(deadEnd == Direction.WEST) isAliveWest = false;
+		if(deadEnd == Direction.EAST) isAliveEast = false;
+		
 		// Retourner la valeur du plateau pour chaque copy du plateau
 		HashMap<Direction, Integer> heuristics = new HashMap<Direction, Integer>();
 		

@@ -26,6 +26,11 @@ public enum Direction {
 		public Direction move_right() {
 			return EAST;
 		}
+
+		@Override
+		public Direction turn_about() {
+			return SOUTH;
+		}
 		
 	},
 	SOUTH{
@@ -43,6 +48,11 @@ public enum Direction {
 		@Override
 		public Direction move_right() {
 			return WEST;
+		}
+
+		@Override
+		public Direction turn_about() {
+			return NORTH;
 		}
 		
 	},
@@ -62,6 +72,11 @@ public enum Direction {
 		public Direction move_right() {
 			return NORTH;
 		}
+
+		@Override
+		public Direction turn_about() {
+			return EAST;
+		}
 		
 	},
 	EAST{
@@ -80,6 +95,11 @@ public enum Direction {
 		public Direction move_right() {
 			return SOUTH;
 		}
+
+		@Override
+		public Direction turn_about() {
+			return WEST;
+		}
 		
 	};
 	/**
@@ -96,6 +116,12 @@ public enum Direction {
 	 * @return
 	 */
 	public abstract Direction move_right();
+	
+	/**
+	 * renvoit la direction opposée
+	 * @return
+	 */
+	public abstract Direction turn_about();
 	public static Direction get_dir(String s) {
 		if(s.equals("N")) return Direction.NORTH;
 		if(s.equals("S")) return Direction.SOUTH;
