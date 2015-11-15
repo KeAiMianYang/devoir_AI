@@ -5,6 +5,8 @@ import java.util.Random;
 
 import com.sun.corba.se.impl.orbutil.DenseIntMapImpl;
 
+import view.DebugBView;
+
 /**
  * Classe representant l'algorithme de Dijkstra
  * @author kork
@@ -34,14 +36,18 @@ public class Dijkstra {
 	 * @return
 	 */
 	public static int heuristique(GameBoard i_gb, Ship i_s){
+		
 		int[][] currentBoard = i_gb.to_int();
 		ArrayList<Ship> ships = i_gb.getListShips();
 		
 		Dijkstra dPlayer = new Dijkstra(currentBoard, i_s);
 		dPlayer.algorithm();
 		int[][] enemyBoard = i_gb.to_int();
+		System.out.println(i_s);
 		for(Ship ship : ships){
-			if(!(ship == i_s)){ // si ce n'est pas le vaisseau testé
+			++ship.a_posX; // on modifie les valeurs du vaisseau pour qu'ils prennent
+			++ship.a_posY; // en compte le tableau plus grand comportant des murs exterieurs
+			if(!(ship.is_equal(i_s) ) ){ // si ce n'est pas le vaisseau testé
 				Dijkstra dEnemy = new Dijkstra(currentBoard, ship);
 				dEnemy.algorithm();
 				dEnemy.updateEnemyBoard(enemyBoard);
@@ -99,7 +105,6 @@ public class Dijkstra {
 	protected void give_value_plateau(int i_x, int i_y, int i_cout){
 		
 		DijkstraIterator ite = new DijkstraIterator(a_board, i_x, i_y);
-		
 		while(ite.hasNext()){
 			int value =ite.next(); // on passe a la position suivante
 			int posX = ite.get_new_posX(); // la nouvelle position
@@ -118,7 +123,7 @@ public class Dijkstra {
 	 * @param i_d le plateau de valeurs adverse
 	 * @return la valeur de ce plateau, Ã  savoir le nombre de case que le joueur contrÃ´le comparÃ© Ã  l'adversaire
 	 */
-	public int compare(int[][] i_d){
+	public int compare(int[][] i_d){ //TODO:BROKEN
 		// -ea si on veux lancer les asserts
 		assert a_board.length == i_d.length && a_board[0].length == i_d[0].length;
 		

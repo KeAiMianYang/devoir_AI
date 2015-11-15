@@ -19,8 +19,9 @@ public class Game {
 		
 		// wall = p.setPosition
 		//	p.move(m);
-		
+		System.out.println("HODOR");
 		Direction bestDirection = next_move(i_p,io_g);
+		System.out.println("\tBest Direction: "+bestDirection);
 		i_p.move(bestDirection);
 		// il faut refaire bouger le vaisseau pour ne pas avoir de problème plus tard
 		// les copies n'ont pas de joueurs liés
@@ -62,6 +63,7 @@ public class Game {
 		boolean isAliveEast = false;
 		boolean isAliveWest = false;
 		try{
+			
 			isAliveNorth = cpShipNorth.move(Direction.NORTH);
 			isAliveSouth = cpShipSouth.move(Direction.SOUTH);
 			isAliveEast = cpShipEast.move(Direction.EAST);
@@ -74,58 +76,64 @@ public class Game {
 		}
 		// Retourner la valeur du plateau pour chaque copy du plateau
 		HashMap<Direction, Integer> heuristics = new HashMap<Direction, Integer>();
-//		int heuristicNorth;
+		
+		//CAS NORD
+		int heuristicNorth = -1;
+		// on initialise l'heuristique au cas où le vaisseau crash
 		if(isAliveNorth){
-//			heuristicNorth = Dijkstra.heuristique(gNord, cpShipNorth);
-			int heuristicNorth = Dijkstra.heuristique(gNord, cpShipNorth);
-			heuristics.put(Direction.NORTH, heuristicNorth);
+			heuristicNorth = Dijkstra.heuristique(gNord, cpShipNorth);
 		}
+		heuristics.put(Direction.NORTH, heuristicNorth);
+		// on attribut l'heuristique donnée
 		
-//		int heuristicSouth;
+		//CAS SUD
+		int heuristicSouth = -1;
 		if(isAliveSouth){
-//			heuristicSouth = Dijkstra.heuristique(gSud, cpShipSouth);
-			int heuristicSouth = Dijkstra.heuristique(gSud, cpShipSouth);
-			heuristics.put(Direction.SOUTH, heuristicSouth);
+			heuristicSouth = Dijkstra.heuristique(gSud, cpShipSouth);
 		}
+		heuristics.put(Direction.SOUTH, heuristicSouth);
 		
-//		int heuristicEast;
+		//CAS EST
+		int heuristicEast = -1;
 		if(isAliveEast){
-//			heuristicEast = Dijkstra.heuristique(gEst, cpShipEast);
-			int heuristicEast = Dijkstra.heuristique(gEst, cpShipEast);
-			heuristics.put(Direction.EAST, heuristicEast);
+			heuristicEast = Dijkstra.heuristique(gEst, cpShipEast);
 		}
+		heuristics.put(Direction.EAST, heuristicEast);
 		
-//		int heuristicWest;
-		if(isAliveWest){
-//			heuristicWest = Dijkstra.heuristique(gOuest, cpShipWest);
-			int heuristicWest = Dijkstra.heuristique(gOuest, cpShipWest);
-			heuristics.put(Direction.WEST, heuristicWest);
+		//CAS OUEST
+		int heuristicWest = -1;
+		if(isAliveWest){//TODO: dans test, est mort, supposé?
+			heuristicWest = Dijkstra.heuristique(gOuest, cpShipWest);
 		}
+		heuristics.put(Direction.WEST, heuristicWest);
 		
-		//Puis comparer les differentes heuristiques et retourner la meilleur
-		int bestValue=0;
+		//Puis on compare les differentes heuristiques et on retourne la meilleur
+		System.out.println(heuristics); // TODO:REMOVE
+		//heuristique incorecte
+		
+		int bestValue=-2; // on s'assure qu'au moins une valeur est choisie
 		Direction bestDirection = null;
 		int currentHeuristic=0;
-		currentHeuristic = heuristics.get(gNord);
-		if(bestValue > currentHeuristic){
+		currentHeuristic = heuristics.get(Direction.NORTH);
+		if(bestValue < currentHeuristic){
 			bestDirection = Direction.NORTH;
 			bestValue = currentHeuristic;
 		}
 		
-		currentHeuristic = heuristics.get(gSud);
-		if(bestValue > currentHeuristic){
+		currentHeuristic = heuristics.get(Direction.SOUTH);
+		if(bestValue < currentHeuristic){
 			bestDirection = Direction.SOUTH;
 			bestValue = currentHeuristic;
 		}
 
-		currentHeuristic = heuristics.get(gEst);
-		if(bestValue > currentHeuristic){
+		currentHeuristic = heuristics.get(Direction.EAST);
+		if(bestValue < currentHeuristic){
 			bestDirection = Direction.EAST;
 			bestValue = currentHeuristic;
 		}
 
-		currentHeuristic = heuristics.get(gOuest);
-		if(bestValue > currentHeuristic){
+		currentHeuristic = heuristics.get(Direction.WEST);
+		if(bestValue < currentHeuristic){
 			bestDirection = Direction.WEST;
 			bestValue = currentHeuristic;
 		}

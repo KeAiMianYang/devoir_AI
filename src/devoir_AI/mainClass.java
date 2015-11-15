@@ -11,14 +11,14 @@ public class mainClass {
 		Player p2 = gb.add_player(2, 5, Direction.EAST);
 		Game game = new Game();
 		
-		while( p.get_isAlive() == true && p2.get_isAlive() == true ){
+		do{
+			game.play(p,gb);
+//			game.next_move(p2,gb);
 			tv.display();
-			//next_move() dans Game
-			game.next_move(p,gb);
-			//game.next_move(p2,gb);
-			tv.display();
-			Thread.sleep(5);
-		}
+			Thread.sleep(2000); // c'est en millisecondes
+		}while( p.get_isAlive() == true && p2.get_isAlive() == true );
+		
+		
 		if(p.get_isAlive() == true){
 			System.out.println("P a gagné");
 		}

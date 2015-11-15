@@ -53,7 +53,8 @@ public class Ship extends Element {
 		//Le vaisseau ne peux pas se deplacer, soit il y a deja un objet, soit il touche le bord du plateau,
 		//Le vaisseau a donc perdu
 		if (!a_board.move(this, posX, posY, i_direction)){
-			System.out.println("\n Crash, le vaisseau a perdu \n");
+//			System.out.println("\n Crash, le vaisseau a perdu \n");
+			// à éviter pour que ça ne s'affiche pas pour les copies
 			return false;
 		}
 		return true;
