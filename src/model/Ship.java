@@ -28,6 +28,10 @@ public class Ship extends Element {
 	public String get_direction(){
 		return a_direction.toString();
 	}
+	
+	public Direction get_vrai_direction() {
+		return a_direction;
+	}
 	/**
 	 * Bouge le vaisseau selon la direction
 	 * @param i_direction
