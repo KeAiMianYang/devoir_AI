@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class GameBoard {
 	protected Element [][] a_board;
 	protected ArrayList<Ship> a_listShips;
+	protected ArrayList<Player> a_listPlayers;
 	/*
 	+----------------- Y
 	|
@@ -35,6 +36,7 @@ public class GameBoard {
 		
 		a_board = new Element[i_x][i_y];
 		a_listShips = new ArrayList<Ship>();
+		a_listPlayers = new ArrayList<Player>();
 	}
 	/**
 	 * ajoute un joueur dans le tableau
@@ -47,6 +49,7 @@ public class GameBoard {
 		Ship o_ship = new Ship(this, i_x, i_y, i_d);
 		a_listShips.add(o_ship);
 		Player o_player = new Player(o_ship, null); // TODO:TOCHANGE
+		a_listPlayers.add(o_player);
 		if((i_x < 0 || i_x > get_length()) || (i_y < 0 || i_y > get_width()))
 //			throw new exception.OutOfBoundException(); // si on essaye de placer un robot en dehors du plateau
 			return null;
@@ -141,6 +144,9 @@ public class GameBoard {
 		}
 		for(Ship s : a_listShips){
 			o_board.a_listShips.add(s.copy(o_board));
+		}
+		for(Player p : a_listPlayers){
+			o_board.a_listPlayers.add(p.copy(o_board));
 		}
 		return o_board;
 	}

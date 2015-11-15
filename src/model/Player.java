@@ -81,8 +81,13 @@ public class Player {
 		}
 			
 	}
-	public void win(){
-		
+	public Player copy(GameBoard i_g){
+		Player o_p = new Player(a_ship.copy(i_g), null);
+		o_p.a_isAlive = a_isAlive;
+		o_p.a_name = a_name;
+		o_p.x = x;
+		o_p.y = y;
+		return o_p;
 	}
 	/**
 	 * renvoit les coordonnées et la direction d'un vaisseau dans une chaine de caracteres

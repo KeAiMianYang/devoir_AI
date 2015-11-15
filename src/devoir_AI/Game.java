@@ -44,7 +44,7 @@ public class Game {
 	 * @param p le joueur
 	 * @return la meilleur direction à prendre
 	 */
-	public Direction next_move(Player p,GameBoard g){
+	public GameBoard next_move(Player p,GameBoard g){
 		GameBoard gNord = g.copy();// Copie pour le NORD
 		GameBoard gSud = g.copy();//Copie pour le SUD		
 		GameBoard gEst = g.copy();//Copie pour l'EST
