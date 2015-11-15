@@ -20,12 +20,12 @@ public class Dijkstra {
 	
 	/**
 	 * instancie la classe
-	 * @param i_board le tableau d'entier tirÃ© de GameBoard
+	 * @param i_board le tableau d'entier tire de GameBoard, entouré de murs
 	 */
 	public Dijkstra(int[][] i_board, Ship i_ship){
 		a_board = i_board;
-		a_originX = i_ship.get_posX();
-		a_originY = i_ship.get_posY();
+		a_originX = i_ship.get_posX()+1; // incrémenté par 1 pour le tableau plus grand
+		a_originY = i_ship.get_posY()+1; // idem
 	}
 	
 	/**
@@ -41,12 +41,11 @@ public class Dijkstra {
 		ArrayList<Ship> ships = i_gb.getListShips();
 		
 		Dijkstra dPlayer = new Dijkstra(currentBoard, i_s);
+		System.out.println("ship "+i_s); //TODO:REMOVE
 		dPlayer.algorithm();
 		int[][] enemyBoard = i_gb.to_int();
 		System.out.println(i_s);
 		for(Ship ship : ships){
-			++ship.a_posX; // on modifie les valeurs du vaisseau pour qu'ils prennent
-			++ship.a_posY; // en compte le tableau plus grand comportant des murs exterieurs
 			if(!(ship.is_equal(i_s) ) ){ // si ce n'est pas le vaisseau testé
 				Dijkstra dEnemy = new Dijkstra(currentBoard, ship);
 				dEnemy.algorithm();

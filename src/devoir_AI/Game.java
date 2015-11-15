@@ -19,9 +19,7 @@ public class Game {
 		
 		// wall = p.setPosition
 		//	p.move(m);
-		System.out.println("HODOR");
 		Direction bestDirection = next_move(i_p,io_g);
-		System.out.println("\tBest Direction: "+bestDirection);
 		i_p.move(bestDirection);
 		// il faut refaire bouger le vaisseau pour ne pas avoir de problème plus tard
 		// les copies n'ont pas de joueurs liés
@@ -53,9 +51,9 @@ public class Game {
 		// Il faut recuperer le vaisseau à déplacer dans chaque cas
 		// est égal à null si aucun vaisseau trouvé
 		Ship cpShipNorth = gNord.get_equivalent_ship(originalShip);
-		Ship cpShipSouth = gNord.get_equivalent_ship(originalShip);
-		Ship cpShipEast = gNord.get_equivalent_ship(originalShip);
-		Ship cpShipWest = gNord.get_equivalent_ship(originalShip);
+		Ship cpShipSouth = gSud.get_equivalent_ship(originalShip);
+		Ship cpShipEast = gEst.get_equivalent_ship(originalShip);
+		Ship cpShipWest = gOuest.get_equivalent_ship(originalShip);
 		
 		//Il faut bouger le vaisseau en question dans chaque direction
 		boolean isAliveNorth = false;
@@ -63,7 +61,6 @@ public class Game {
 		boolean isAliveEast = false;
 		boolean isAliveWest = false;
 		try{
-			
 			isAliveNorth = cpShipNorth.move(Direction.NORTH);
 			isAliveSouth = cpShipSouth.move(Direction.SOUTH);
 			isAliveEast = cpShipEast.move(Direction.EAST);
@@ -81,6 +78,7 @@ public class Game {
 		int heuristicNorth = -1;
 		// on initialise l'heuristique au cas où le vaisseau crash
 		if(isAliveNorth){
+			System.out.println("cpShipNorth "+cpShipNorth);
 			heuristicNorth = Dijkstra.heuristique(gNord, cpShipNorth);
 		}
 		heuristics.put(Direction.NORTH, heuristicNorth);

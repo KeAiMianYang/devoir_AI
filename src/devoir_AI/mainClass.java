@@ -11,12 +11,14 @@ public class mainClass {
 		Player p2 = gb.add_player(2, 5, Direction.EAST);
 		Game game = new Game();
 		
-		do{
+		tv.display();
+		Thread.sleep(1000);
+		while( p.get_isAlive() == true && p2.get_isAlive() == true ){
 			game.play(p,gb);
-//			game.next_move(p2,gb);
+			game.play(p2,gb);
 			tv.display();
-			Thread.sleep(2000); // c'est en millisecondes
-		}while( p.get_isAlive() == true && p2.get_isAlive() == true );
+			Thread.sleep(1000); // c'est en millisecondes
+		}
 		
 		
 		if(p.get_isAlive() == true){
