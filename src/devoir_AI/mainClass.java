@@ -71,7 +71,7 @@ public class mainClass {
 		tv.display();
 		Thread.sleep(500);
 		ArrayList<Player> listDead = new ArrayList<Player>();  // la liste des morts
-		while(listP.size() != listDead.size()+1){
+		while(listP.size() > listDead.size()+1){
 			for(Player p : listP){
 				if(!listDead.contains(p)){
 					g.play(p, gb);
@@ -81,7 +81,7 @@ public class mainClass {
 				}
 			}
 			tv.display();
-			Thread.sleep(1000);
+			Thread.sleep(500);
 			
 		}
 		int winner = 0;
@@ -92,7 +92,11 @@ public class mainClass {
 				break;
 			}
 		}
-		System.out.println("partie terminée,\nle gagnant est le joueur "+winner);
+		System.out.println("partie terminée,");
+		if(winner > 0)
+			System.out.println("le gagnant est le joueur "+winner);
+		else
+			System.out.println("match null");
 	/*	GameBoard gNord = gb.copy();
 		System.out.println(gNord.getListShips()+" "+gb.getListShips());
 		
