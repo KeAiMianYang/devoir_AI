@@ -72,8 +72,9 @@ public class MinMax {
 		else {
 			if(estNoeudJoueur(ei)){ //ei est un noeud joueur? 
 				 //4 est le nombre de successeur total
-				 for(int i=0; i< 4; i++){ //for all ej ∈ successeurs(ei ) do
-					 Node ej = ei.getParentNode();//successeur = noeud parent
+				 for(int i=0; i< 4; i++){ //for all ej ∈ successeurs(ei ) do       LIGNE A REVOIR
+					 Node ej = ei.getParentNode();//successeur = noeud parent      LIGNE A REVOIR
+					 
 					 alpha = max(m,minimaxAlphaBeta(ej,alpha,beta,(d-1)));
 					 if( alpha >= beta){
 						 return alpha;
@@ -82,8 +83,8 @@ public class MinMax {
 				 return alpha;
 			}
 			else{
-				for(int i=0; i< 4; i++){ //for all ej ∈ successeurs(ei ) do
-					 Node ej = ei.getParentNode();//successeur = noeud parent
+				for(int i=0; i< 4; i++){ //for all ej ∈ successeurs(ei ) do    LIGNE A REVOIR
+					 Node ej = ei.getParentNode();//successeur = noeud parent  LIGNE A REVOIR
 					 m = min(m,minimaxAlphaBeta(ej,alpha,beta,(d-1)));
 					 if( alpha >= beta){
 						 return beta;
