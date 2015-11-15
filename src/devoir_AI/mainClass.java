@@ -32,8 +32,8 @@ public class mainClass {
 		int sizeX=0;
 		int sizeY=0;
 		while(sizeX < 3 && sizeY < 3){
-			System.out.println("Veuillez entrer les dimmensions de votre plateau"
-					+ "de la façon suivante:\n'nombre de lignes' nombre de colonnes'\n"
+			System.out.println("Veuillez entrer les dimmensions de votre plateau "
+					+ "de la façon suivante:\n'nombre de lignes nombre de colonnes'\n"
 					+ "le tableau doit être au minimum un 3x3");
 			sizeX = sc.nextInt();
 			sizeY = sc.nextInt();
@@ -92,9 +92,9 @@ public class mainClass {
 				break;
 			}
 		}
-		System.out.println("partie terminée,");
+		System.out.println("Partie terminée,");
 		if(winner > 0)
-			System.out.println("le gagnant est le joueur "+winner);
+			System.out.println("Le gagnant est le joueur "+winner);
 		else
 			System.out.println("match null");
 	/*	GameBoard gNord = gb.copy();

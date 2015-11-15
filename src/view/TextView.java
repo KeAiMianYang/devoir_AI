@@ -85,12 +85,12 @@ public class TextView {
 	 * @param i_maxY
 	 */
 	public static void text_create_player(int i_pNum, int i_maxX, int i_maxY){
-		System.out.println("entrées les coordonnées du joueur "+i_pNum+" et sa direction\n"
+		System.out.println("Entrez les coordonnées du joueur "+i_pNum+" et sa direction\n"
 				+ "dans la forme 'position_x position_y direction',\n"
 				+ "les coordonnées peuvent se situer:\n"
-				+ "\tentre 0 et "+i_maxX+" pour les X et 0 et "+i_maxY+" pour les Y\n"
+				+ "\t entre 0 et "+i_maxX+" pour les X et 0 et "+i_maxY+" pour les Y\n"
 				+ "la direction peux soit être:\n\t'N' pour Nord,\t'S' pour Sud,\t'O' pour Ouest"
-				+ ",\t'E' pour Est");
+				+ ",\t 'E' pour Est");
 	}
 	 /**
 	  * demande les characteristiques du joueur
@@ -115,9 +115,9 @@ public class TextView {
 	public static String choose(Scanner sc) {
 		String entry = "";
 		while(!entry.equals("p") && !entry.equals("s")){
-			System.out.println("tappez 'p' si vous voulez ajouter un joueur,"
+			System.out.println("tapez 'p' si vous voulez ajouter un joueur,"
 					+ "'s' si vous voulez lancer la partie"
-					+ "(vous ne pouvez pas lancer la partie avec moins de 2 joueurs");
+					+ "(vous ne pouvez pas lancer la partie avec moins de 2 joueurs)");
 			entry = sc.next();
 		}
 		return entry;
