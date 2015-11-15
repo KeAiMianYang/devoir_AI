@@ -14,9 +14,15 @@ import org.w3c.dom.Node;
 public class MinMax {
 	
 	protected int m;
+	protected int a_nbJoueurs;
+	protected int a_maxDepth;
+	protected Player a_player;
+	protected GameBoard a_gb;
 	
-	public MinMax(){
-		
+	public MinMax(int i_maxDept, Player i_p, GameBoard i_g){
+		a_maxDepth = i_maxDept;
+		a_player = i_p;
+		a_gb = i_g;
 	}
 	/*Algo du cours :
 	 if d = 0 then
@@ -69,7 +75,7 @@ public class MinMax {
 	
 	public int minimaxAlphaBeta(Node ei,int alpha, int beta, int d){
 		
-		if(d == 0){
+		if(d == a_maxDepth){
 			return f(ei);
 		}
 		else {
@@ -78,7 +84,7 @@ public class MinMax {
 				 for(int i=0; i< 4; i++){ //for all ej ∈ successeurs(ei ) do       LIGNE A REVOIR
 					 Node ej = ei.getParentNode();//successeur = noeud parent      LIGNE A REVOIR
 					 
-					 alpha = max(m,minimaxAlphaBeta(ej,alpha,beta,(d-1)));
+					 alpha = max(m,minimaxAlphaBeta(ej,alpha,beta,(d+1)));
 					 if( alpha >= beta){
 						 return alpha;
 					 }
@@ -88,7 +94,7 @@ public class MinMax {
 			else{
 				for(int i=0; i< 4; i++){ //for all ej ∈ successeurs(ei ) do    LIGNE A REVOIR
 					 Node ej = ei.getParentNode();//successeur = noeud parent  LIGNE A REVOIR
-					 m = min(m,minimaxAlphaBeta(ej,alpha,beta,(d-1)));
+					 m = min(m,minimaxAlphaBeta(ej,alpha,beta,(d+1)));
 					 if( alpha >= beta){
 						 return beta;
 					 }
