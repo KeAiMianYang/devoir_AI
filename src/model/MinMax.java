@@ -32,7 +32,14 @@ public class MinMax {
 		end if
 	  	return m
 	end if */
-	public int minimax(Node ei, int d){
+	/**
+	 * Correspond a l'algo minmax 
+	 * Il faudra rajouter l'alpha/beta par la suite
+	 * @param ei
+	 * @param d
+	 * @return
+	 */
+/*	public int minimax(Node ei, int d){
 	
 		if(d == 0){
 			return f(ei);
@@ -55,7 +62,38 @@ public class MinMax {
 			}
 			return m;
 		}
+	}*/
+	
+	public int minimaxAlphaBeta(Node ei,int alpha, int beta, int d){
+		
+		if(d == 0){
+			return f(ei);
+		}
+		else {
+			if(estNoeudJoueur(ei)){ //ei est un noeud joueur? 
+				 //4 est le nombre de successeur total
+				 for(int i=0; i< 4; i++){ //for all ej ∈ successeurs(ei ) do
+					 Node ej = ei.getParentNode();//successeur = noeud parent
+					 alpha = max(m,minimaxAlphaBeta(ej,alpha,beta,(d-1)));
+					 if( alpha >= beta){
+						 return alpha;
+					 }
+				 }
+				 return alpha;
+			}
+			else{
+				for(int i=0; i< 4; i++){ //for all ej ∈ successeurs(ei ) do
+					 Node ej = ei.getParentNode();//successeur = noeud parent
+					 m = min(m,minimaxAlphaBeta(ej,alpha,beta,(d-1)));
+					 if( alpha >= beta){
+						 return beta;
+					 }
+				}
+				return beta;
+			}
+		}
 	}
+	
 	/**
 	 * Cette méthode test si le noeud appartient au joueur ou non
 	 * @param noeud
