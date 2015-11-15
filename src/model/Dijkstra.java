@@ -2,8 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-import view.DebugBView;
-
 /**
  * Classe representant l'algorithme de Dijkstra
  * @author kork
@@ -34,35 +32,24 @@ public class Dijkstra {
 	 */
 	public static int heuristique(GameBoard i_gb, Ship i_s){
 		
-		int[][] currentBoard = i_gb.to_int();
+//		int[][] currentBoard = i_gb.to_int();
+		//A NE SURTOUT PAS UTILISER! RISQUE D'AVOIR LE MÊME TABLEAU PARTOUT
 		ArrayList<Ship> ships = i_gb.getListShips();
 		
-		Dijkstra dPlayer = new Dijkstra(currentBoard, i_s);
+		Dijkstra dPlayer = new Dijkstra(i_gb.to_int(), i_s);
 		dPlayer.algorithm();
-//		System.out.println("\ngood board v0"); // TODO
-//		DebugBView.array_int_view(dPlayer.a_board);
 		
 		int[][] enemyBoard = i_gb.to_int();
 		for(Ship ship : ships){
 			if(!(ship.is_equal(i_s) ) ){ // si ce n'est pas le vaisseau testé
 				// fonctionne le vaisseau allié ne rentre pas dedans
-				Dijkstra dEnemy = new Dijkstra(currentBoard, ship);
+				Dijkstra dEnemy = new Dijkstra(i_gb.to_int(), ship);
 				dEnemy.algorithm();
-//				System.out.println("enemyboard");
-//				DebugBView.array_int_view(dEnemy.a_board);
 				dEnemy.updateEnemyBoard(enemyBoard); // pb pas d'ici
 			}
 		}
-		//TODO:REMOVE
-//		System.out.println("\ngood board");
-//		DebugBView.array_int_view(dPlayer.a_board);
-//		System.out.println("bad board");
-//		DebugBView.array_int_view(enemyBoard);
 		
 		return dPlayer.compare(enemyBoard);
-		
-//		Random r = new Random();
-//		return r.nextInt(9)+1; // une valeur entre 1 et 10
 	}
 
 	/**
