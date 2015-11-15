@@ -1,11 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Random;
-
-import com.sun.corba.se.impl.orbutil.DenseIntMapImpl;
-
-import view.DebugBView;
 
 /**
  * Classe representant l'algorithme de Dijkstra

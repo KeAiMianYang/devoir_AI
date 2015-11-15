@@ -1,5 +1,4 @@
 package devoir_AI;
-import exception.OutOfBoundException;
 import model.*;
 import view.*;
 public class mainClass {

@@ -2,8 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-import exception.OutOfBoundException;
-
 /**
  * classe representant le plateau de jeu
  * @author kork

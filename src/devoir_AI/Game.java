@@ -1,6 +1,5 @@
 package devoir_AI;
 
-import java.util.Collections;
 import java.util.HashMap;
 
 import model.*;
