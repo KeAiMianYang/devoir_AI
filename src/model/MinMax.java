@@ -9,7 +9,9 @@ import org.w3c.dom.Node;
  *
  */
 public class MinMax {
+	
 	protected int m;
+	
 	public MinMax(){
 		
 	}
@@ -38,14 +40,15 @@ public class MinMax {
 		else {
 			if(estNoeudJoueur(ei)){ //ei est un noeud joueur? 
 				 m = -10000000;//Remplace moins l'infini
-				 for(int i=0; i< ei.getChildNodes().getLength(); i++){ //for all ej ∈ successeurs(ei ) do
+				 //4 est le nombre de successeur total
+				 for(int i=0; i< 4; i++){ //for all ej ∈ successeurs(ei ) do
 					 Node ej = ei.getParentNode();//successeur = noeud parent
 					 m = max(m,minimax(ej,(d-1)));
 				 }
 			}
 			else{
 				m = 10000000;
-				for(int i=0; i< ei.getChildNodes().getLength(); i++){ //for all ej ∈ successeurs(ei ) do
+				for(int i=0; i< 4; i++){ //for all ej ∈ successeurs(ei ) do
 					 Node ej = ei.getParentNode();//successeur = noeud parent
 					 m = min(m,minimax(ej,(d-1)));
 				 }
@@ -59,6 +62,7 @@ public class MinMax {
 	 * @return
 	 */
 	public boolean estNoeudJoueur(Node noeud){
+		//les noeuds impairs sont les noeuds joueur
 		return true;
 	}
 	/**
