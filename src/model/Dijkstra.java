@@ -36,10 +36,8 @@ public class Dijkstra {
 		ArrayList<Ship> ships = i_gb.getListShips();
 		
 		Dijkstra dPlayer = new Dijkstra(currentBoard, i_s);
-		System.out.println("ship "+i_s); //TODO:REMOVE
 		dPlayer.algorithm();
 		int[][] enemyBoard = i_gb.to_int();
-		System.out.println(i_s);
 		for(Ship ship : ships){
 			if(!(ship.is_equal(i_s) ) ){ // si ce n'est pas le vaisseau testé
 				Dijkstra dEnemy = new Dijkstra(currentBoard, ship);

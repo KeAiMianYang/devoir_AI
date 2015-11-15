@@ -9,9 +9,8 @@ import java.util.ArrayList;
  */
 public class GameBoard {
 	protected Element [][] a_board;
-	public Player[] a_player_in_live;
 	protected ArrayList<Ship> a_listShips;
-	/* TODO
+	/*
 	+----------------- Y
 	|
 	|
@@ -54,7 +53,6 @@ public class GameBoard {
 	}
 	
 	public int setNumberPlayerAlive(){
-		 // TODO
 		return 1;
 	}
 	public int setNumberColonne(){

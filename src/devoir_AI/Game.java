@@ -77,7 +77,6 @@ public class Game {
 		int heuristicNorth = -1;
 		// on initialise l'heuristique au cas où le vaisseau crash
 		if(isAliveNorth){
-			System.out.println("cpShipNorth "+cpShipNorth);
 			heuristicNorth = Dijkstra.heuristique(gNord, cpShipNorth);
 		}
 		heuristics.put(Direction.NORTH, heuristicNorth);
@@ -99,14 +98,12 @@ public class Game {
 		
 		//CAS OUEST
 		int heuristicWest = -1;
-		if(isAliveWest){//TODO: dans test, est mort, supposé?
+		if(isAliveWest){
 			heuristicWest = Dijkstra.heuristique(gOuest, cpShipWest);
 		}
 		heuristics.put(Direction.WEST, heuristicWest);
 		
 		//Puis on compare les differentes heuristiques et on retourne la meilleur
-		System.out.println(heuristics); // TODO:REMOVE
-		//heuristique incorecte
 		
 		int bestValue=-2; // on s'assure qu'au moins une valeur est choisie
 		Direction bestDirection = null;
@@ -138,14 +135,4 @@ public class Game {
 		return bestDirection;
 		
 	} // next_move(Player, GameBoard) : GameBoard
-
-	/**
-	 * renvoit la valeur d'un plateau selon le premier joueur
-	 * @param g le plateau à étudier
-	 * @return la valeur du plateau
-	 */
-	public int value(GameBoard g){
-		//Appel les méthodes dans Dijsktra pour avoir la valeur de l'heuristique
-		return 0;
-	}
 }
