@@ -54,7 +54,6 @@ public class mainClass {
 				Player p = gb.add_player(Integer.parseInt(position[0]),
 						Integer.parseInt(position[1]),
 						Direction.get_dir(position[2]));
-				System.out.println("p "+p);
 				if(p != null){
 					++playerNumber;
 					listP.add(p);
