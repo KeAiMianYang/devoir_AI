@@ -1,8 +1,11 @@
+/**
+ * BINOME : 
+ * Dupuy-roudel Hugo : 21306151
+ * Lebert Jasmine : 21301704
+ */
 package model;
 /**
  * Classe representant un vaisseau/moto
- * @author Jasmine
- *
  */
 public class Ship extends Element {
 

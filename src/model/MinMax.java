@@ -1,11 +1,14 @@
+/**
+ * BINOME : 
+ * Dupuy-roudel Hugo : 21306151
+ * Lebert Jasmine : 21301704
+ */
 package model;
 
 import org.w3c.dom.Node;
 
 /**
  * algorithme minmax avec élagage alpha-beta
-
- * @author Jasmine
  *
  */
 public class MinMax {

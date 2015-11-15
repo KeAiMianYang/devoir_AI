@@ -1,7 +1,12 @@
+/**
+ * BINOME : 
+ * Dupuy-roudel Hugo : 21306151
+ * Lebert Jasmine : 21301704
+ */
+
 package model;
 /**
  * Classe representant un element Mur
- * @author Jasmine
  *
  */
 public class Wall extends Element{

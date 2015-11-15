@@ -1,3 +1,8 @@
+/**
+ * BINOME : 
+ * Dupuy-roudel Hugo : 21306151
+ * Lebert Jasmine : 21301704
+ */
 package devoir_AI;
 
 import java.util.HashMap;

@@ -1,3 +1,8 @@
+/**
+ * BINOME : 
+ * Dupuy-roudel Hugo : 21306151
+ * Lebert Jasmine : 21301704
+ */
 package model;
 /**
  * Direction represente les directions Nord, Sud, Est, Ouest
