@@ -132,6 +132,14 @@ public class Game {
 			bestValue = currentHeuristic;
 		}
 		
+		//TODO:REMOVE
+//		System.out.println("\theuristiques:");
+//		System.out.println("NORTH "+heuristicNorth);
+//		System.out.println("SOUTH "+heuristicSouth);
+//		System.out.println("WEST "+heuristicWest);
+//		System.out.println("EAST "+heuristicEast);
+//		System.out.println("best "+bestDirection);
+		
 		return bestDirection;
 		
 	} // next_move(Player, GameBoard) : GameBoard

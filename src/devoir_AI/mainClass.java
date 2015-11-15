@@ -8,8 +8,9 @@ import view.*;
 public class mainClass {
 
 	public static void main(String[] args) throws InterruptedException {
+/*
 		if(args.length == 0){
-			System.out.println("tron [nombre de lignes] [nombre de colonnes]");
+			System.out.println(" veuillez entrer:\ntron [nombre de lignes] [nombre de colonnes]");
 			System.exit(0);
 		}
 		int sizeX = 0;
@@ -26,9 +27,20 @@ public class mainClass {
 			e.printStackTrace();
 			System.exit(-1);
 		}
+	*/	
+		Scanner sc = new Scanner(System.in);
+		int sizeX=0;
+		int sizeY=0;
+		while(sizeX < 3 && sizeY < 3){
+			System.out.println("Veuillez entrer les dimmensions de votre plateau"
+					+ "de la façon suivante: 'nombre de lignes' nombre de colonnes'\n"
+					+ "le tableau doit être au minimum un 3x3");
+			sizeX = sc.nextInt();
+			sizeY = sc.nextInt();
+		}
+		
 		
 		GameBoard gb = new GameBoard(sizeX, sizeY);
-		Scanner sc = new Scanner(System.in);
 		int playerNumber = 1;
 		String strEntry = "";
 		String[] position = new String[3];
@@ -58,7 +70,7 @@ public class mainClass {
 		Game g = new Game();
 		TextView tv = new TextView(gb);
 		tv.display();
-		Thread.sleep(1000);
+		Thread.sleep(500);
 		ArrayList<Player> listDead = new ArrayList<Player>();  // la liste des morts
 		while(listP.size() != listDead.size()+1){
 			for(Player p : listP){

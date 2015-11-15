@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import view.DebugBView;
+
 /**
  * Classe representant l'algorithme de Dijkstra
  * @author kork
@@ -37,14 +39,25 @@ public class Dijkstra {
 		
 		Dijkstra dPlayer = new Dijkstra(currentBoard, i_s);
 		dPlayer.algorithm();
+//		System.out.println("\ngood board v0"); // TODO
+//		DebugBView.array_int_view(dPlayer.a_board);
+		
 		int[][] enemyBoard = i_gb.to_int();
 		for(Ship ship : ships){
 			if(!(ship.is_equal(i_s) ) ){ // si ce n'est pas le vaisseau testé
+				// fonctionne le vaisseau allié ne rentre pas dedans
 				Dijkstra dEnemy = new Dijkstra(currentBoard, ship);
 				dEnemy.algorithm();
-				dEnemy.updateEnemyBoard(enemyBoard);
+//				System.out.println("enemyboard");
+//				DebugBView.array_int_view(dEnemy.a_board);
+				dEnemy.updateEnemyBoard(enemyBoard); // pb pas d'ici
 			}
 		}
+		//TODO:REMOVE
+//		System.out.println("\ngood board");
+//		DebugBView.array_int_view(dPlayer.a_board);
+//		System.out.println("bad board");
+//		DebugBView.array_int_view(enemyBoard);
 		
 		return dPlayer.compare(enemyBoard);
 		
@@ -95,6 +108,7 @@ public class Dijkstra {
 	 * @param i_cout coÃ»t du prochain coup
 	 */
 	protected void give_value_plateau(int i_x, int i_y, int i_cout){
+		//TODO: PB d'ici
 		
 		DijkstraIterator ite = new DijkstraIterator(a_board, i_x, i_y);
 		while(ite.hasNext()){
@@ -115,7 +129,7 @@ public class Dijkstra {
 	 * @param i_d le plateau de valeurs adverse
 	 * @return la valeur de ce plateau, Ã  savoir le nombre de case que le joueur contrÃ´le comparÃ© Ã  l'adversaire
 	 */
-	public int compare(int[][] i_d){ //TODO:BROKEN
+	public int compare(int[][] i_d){
 		// -ea si on veux lancer les asserts
 		assert a_board.length == i_d.length && a_board[0].length == i_d[0].length;
 		
