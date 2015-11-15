@@ -33,7 +33,7 @@ public class mainClass {
 		int sizeY=0;
 		while(sizeX < 3 && sizeY < 3){
 			System.out.println("Veuillez entrer les dimmensions de votre plateau"
-					+ "de la façon suivante: 'nombre de lignes' nombre de colonnes'\n"
+					+ "de la façon suivante:\n'nombre de lignes' nombre de colonnes'\n"
 					+ "le tableau doit être au minimum un 3x3");
 			sizeX = sc.nextInt();
 			sizeY = sc.nextInt();
